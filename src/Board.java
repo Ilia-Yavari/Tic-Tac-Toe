@@ -16,9 +16,14 @@ public class Board {
             if (board[row][col].equals("  ")) {
                 board[row][col] = sign;
                 return true;
+            } else {
+                System.out.println("Cell is already occupied. Try again.");
+                return false;
             }
+        } else {
+            System.out.println("Please enter two numbers between 1 and " + Main.SIZE + ".");
+            return false;
         }
-        return false;
     }
 
     public static boolean checkRowWin(String[][] board) {
@@ -60,12 +65,12 @@ public class Board {
     }
 
     public static boolean checkDiagWin(String[][] board) {
-        if (!board[0][0].equals("  ") && board[0][0].equals(board[1][1])) {
+        if (!board[1][1].equals(Main.BLANK) && board[0][0].equals(board[1][1])) {
             if (board[1][1].equals(board[2][2])) {
                 return true;
             }
         }
-        if (!board[0][0].equals("  ") && board[0][2].equals(board[1][1])) {
+        if (!board[1][1].equals(Main.BLANK) && board[0][2].equals(board[1][1])) {
             if (board[1][1].equals(board[2][0])) {
                 return true;
             }
